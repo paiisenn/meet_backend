@@ -3,6 +3,8 @@ const cors = require('cors');
 const connectDB = require('./config/db');
 require('dotenv').config();
 
+const authRoutes = require('./routes/authRoutes');
+
 const app = express();
 
 // Middleware
@@ -16,5 +18,6 @@ connectDB();
 app.get('/', (req, res) => {
     res.send('Meet backend is running...');
 });
+app.use('/api/auth', authRoutes);
 
 module.exports = app;
